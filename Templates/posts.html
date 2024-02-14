@@ -1,0 +1,25 @@
+{% extends 'navbar.html' %}
+{% block content %}
+
+    <div class="container mt-5">
+        <div class="w-100 border d-flex align-items-center justify-content-between" style="height: 100px;">
+            <h1 class="text-danger">{{user}} postlari</h1>
+            <span class="fs-1 text-danger">postlar ( {{userPosts.count}} ) ta</span>
+        </div>
+        <div class="row mt-4">
+            {% for posts in userPosts %}
+                <div class="col-4">
+                    <div class="card">
+                        <img style="height: 250px;" src="{{ posts.post_image.url }}" alt="{{posts.title}}">
+                        <h1>{{posts.title}}</h1>
+                        <p>{{posts.text}}</p>
+                        <p>{{posts.created}} <i class="fa-solid fa-eye"></i></p>
+                        <a href="{% url 'PostEditForm' posts.id %}" class="text-warning">Edit this post</a>
+                        <a href="{% url 'PostDeleteForm' posts.id %}" class="text-danger">Delete this post</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

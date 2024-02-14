@@ -1,0 +1,16 @@
+{% extends 'navbar.html' %}
+{% block content %}
+
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-success" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+        {% endif %}
+    <form action="{% url 'PostEditForm' pk %}" method="post" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <button>yangilash</button>
+    </form>
+{% endblock %}

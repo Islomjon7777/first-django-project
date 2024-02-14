@@ -1,0 +1,17 @@
+{% extends 'navbar.html' %}
+{% block content %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-danger" role="alert">
+                {{message}}
+            </div>
+            {% endfor %}
+        {% endif %}
+
+    <form action="{% url 'create_post' user.id %}" method="post" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ forms }}
+        <button>Saqlash</button>
+    </form>
+
+{% endblock %}
